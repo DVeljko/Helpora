@@ -1,0 +1,230 @@
+{% extends "base.html" %}
+
+{% block title %}
+About | Helpora
+{% endblock %}
+
+{% block content %}
+
+<section class="about-hero">
+    <div class="container">
+        <div class="about-hero-content text-center">
+
+            <span class="section-label">
+                About Helpora
+            </span>
+
+            <h1>
+                Helping people connect through generosity.
+            </h1>
+
+            <p>
+                Helpora is a platform created to connect people who need
+                support with people who are willing to help.
+            </p>
+
+        </div>
+    </div>
+</section>
+
+
+<section class="about-section">
+    <div class="container">
+
+        <div class="row align-items-center g-5">
+
+            <div class="col-lg-6">
+
+                <span class="section-label">
+                    Our Mission
+                </span>
+
+                <h2>
+                    Make helping easier and more transparent.
+                </h2>
+
+                <p>
+                    Helpora gives people a place where they can create
+                    campaigns for medical treatment, financial difficulties,
+                    housing problems and other situations where support is needed.
+                </p>
+
+                <p>
+                    Our goal is to make every campaign clear, organized and easy
+                    to understand, so donors can see who they are helping and
+                    why their support matters.
+                </p>
+
+            </div>
+
+
+            <div class="col-lg-6">
+
+                <div class="about-info-card">
+
+                    <h3>
+                        Why Helpora?
+                    </h3>
+
+                    <div class="about-info-item">
+                        <span>✓</span>
+
+                        <div>
+                            <h5>Transparent Donations</h5>
+                            <p>
+                                Donations can be recorded and connected to
+                                individual campaigns.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="about-info-item">
+                        <span>✓</span>
+
+                        <div>
+                            <h5>Different Types of Help</h5>
+                            <p>
+                                Campaigns can support medical treatment,
+                                housing needs and financial difficulties.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="about-info-item">
+                        <span>✓</span>
+
+                        <div>
+                            <h5>Simple and Accessible</h5>
+                            <p>
+                                People can quickly browse campaigns and
+                                choose who they want to support.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<section class="about-values-section">
+    <div class="container">
+
+        <div class="section-heading text-center">
+
+            <span class="section-label">
+                Our Values
+            </span>
+
+            <h2>
+                What Helpora stands for
+            </h2>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="about-value-card">
+
+                    <div class="about-value-icon">
+                        🤝
+                    </div>
+
+                    <h4>
+                        Community
+                    </h4>
+
+                    <p>
+                        We believe people can make a meaningful difference
+                        when they come together.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="about-value-card">
+
+                    <div class="about-value-icon">
+                        🔍
+                    </div>
+
+                    <h4>
+                        Transparency
+                    </h4>
+
+                    <p>
+                        Clear campaign information and donation records help
+                        build trust between people.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="about-value-card">
+
+                    <div class="about-value-icon">
+                        ❤️
+                    </div>
+
+                    <h4>
+                        Compassion
+                    </h4>
+
+                    <p>
+                        Every campaign represents a real person or family
+                        going through a difficult situation.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<section class="cta-section">
+    <div class="container">
+
+        <div class="cta-box text-center">
+
+            <h2>
+                Be part of someone's story.
+            </h2>
+
+            <p>
+                Browse active campaigns and find someone you would like
+                to support.
+            </p>
+
+            <a href="{{ url_for('all_campaigns') }}"
+               class="btn helpora-btn btn-lg">
+                Explore Campaigns
+            </a>
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

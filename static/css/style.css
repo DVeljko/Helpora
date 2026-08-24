@@ -1,0 +1,2391 @@
+/* =========================
+   GENERAL
+========================= */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    background-color: #f8f9fa;
+    color: #212529;
+}
+
+main {
+    flex: 1;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.helpora-navbar {
+    background-color: #18232e;
+    padding: 15px 0;
+}
+
+.navbar-brand {
+    font-size: 1.7rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.navbar-nav {
+    gap: 10px;
+}
+
+.navbar .nav-link {
+    color: #d9dee3;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.navbar .nav-link:hover {
+    color: #ffffff;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.helpora-btn {
+    background-color: #198754;
+    color: white;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-weight: 600;
+    border: none;
+    transition: 0.2s;
+}
+
+.helpora-btn:hover {
+    background-color: #157347;
+    color: white;
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.helpora-footer {
+    background-color: #18232e;
+    color: #d9dee3;
+    padding: 35px 0;
+    margin-top: 60px;
+}
+
+.footer-logo {
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.helpora-footer p {
+    margin-bottom: 8px;
+}
+
+.copyright {
+    font-size: 0.85rem;
+    color: #9ba4ad;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero-section {
+    padding: 90px 0;
+    background: linear-gradient(
+        135deg,
+        #f8f9fa 0%,
+        #eef7f2 100%
+    );
+}
+
+.min-vh-75 {
+    min-height: 75vh;
+}
+
+.hero-badge {
+    display: inline-block;
+    background-color: #dff3e8;
+    color: #198754;
+    padding: 8px 14px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: #18232e;
+}
+
+.hero-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #5f6872;
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.hero-card {
+    background-color: white;
+    padding: 45px 35px;
+    border-radius: 20px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+}
+
+.hero-card h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.hero-card p {
+    color: #6c757d;
+    margin-bottom: 30px;
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.hero-stats div {
+    flex: 1;
+}
+
+.hero-stats h4 {
+    color: #198754;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.hero-stats span {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+
+/* =========================
+   GENERAL SECTIONS
+========================= */
+
+.categories-section,
+.campaigns-section,
+.how-it-works-section,
+.cta-section {
+    padding: 90px 0;
+}
+
+.section-heading {
+    margin-bottom: 50px;
+}
+
+.section-heading.text-center {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+
+.section-label {
+    display: inline-block;
+    color: #198754;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.section-heading h2 {
+    font-size: 2.4rem;
+    font-weight: 750;
+    color: #18232e;
+    margin-bottom: 15px;
+}
+
+.section-heading p {
+    color: #6c757d;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+
+/* =========================
+   CATEGORIES
+========================= */
+
+.categories-section {
+    background-color: white;
+}
+
+.category-card {
+    height: 100%;
+    background-color: #f8f9fa;
+    border-radius: 16px;
+    padding: 35px 30px;
+    transition: 0.25s;
+    border: 1px solid #eceff1;
+}
+
+.category-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+}
+
+.category-icon {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+.category-card h4 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #18232e;
+}
+
+.category-card p {
+    color: #6c757d;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.category-card a {
+    text-decoration: none;
+    color: #198754;
+    font-weight: 600;
+}
+
+
+/* =========================
+   CAMPAIGNS
+========================= */
+
+.campaigns-section {
+    background-color: #f6f8f9;
+}
+
+.campaign-card {
+    height: 100%;
+    background-color: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+    transition: 0.25s;
+}
+
+.campaign-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.campaign-image {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.campaign-body {
+    padding: 25px;
+}
+
+.campaign-category {
+    display: inline-block;
+    background-color: #e6f4ec;
+    color: #198754;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 6px 10px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+}
+
+.campaign-body h4 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #18232e;
+    margin-bottom: 12px;
+}
+
+.campaign-body p {
+    color: #6c757d;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.campaign-card .progress {
+    height: 9px;
+    border-radius: 10px;
+    background-color: #e9ecef;
+    margin-bottom: 12px;
+}
+
+.campaign-card .progress-bar {
+    background-color: #198754;
+    border-radius: 10px;
+}
+
+.campaign-money {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+.campaign-money strong {
+    color: #18232e;
+}
+
+
+/* =========================
+   HOW IT WORKS
+========================= */
+
+.how-it-works-section {
+    background-color: white;
+}
+
+.step-card {
+    padding: 25px;
+}
+
+.step-number {
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #198754;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.step-card h4 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #18232e;
+    margin-bottom: 12px;
+}
+
+.step-card p {
+    color: #6c757d;
+    line-height: 1.7;
+}
+
+
+/* =========================
+   CTA
+========================= */
+
+.cta-section {
+    padding-top: 50px;
+}
+
+.cta-box {
+    background-color: #18232e;
+    color: white;
+    padding: 65px 30px;
+    border-radius: 22px;
+}
+
+.cta-box h2 {
+    font-size: 2.3rem;
+    font-weight: 750;
+    margin-bottom: 15px;
+}
+
+.cta-box p {
+    max-width: 650px;
+    margin: 0 auto 25px;
+    color: #cbd2d8;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 991px) {
+
+    .hero-section {
+        padding: 70px 0;
+    }
+
+    .hero-title {
+        font-size: 2.8rem;
+    }
+
+    .hero-card {
+        padding: 35px 25px;
+    }
+
+}
+
+@media (max-width: 767px) {
+
+    .hero-title {
+        font-size: 2.3rem;
+    }
+
+    .section-heading h2 {
+        font-size: 2rem;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+    }
+
+    .campaign-money {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .cta-box h2 {
+        font-size: 1.9rem;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .hero-section,
+    .categories-section,
+    .campaigns-section,
+    .how-it-works-section,
+    .cta-section {
+        padding: 60px 0;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+
+    .hero-card {
+        padding: 30px 20px;
+    }
+
+    .cta-box {
+        padding: 45px 20px;
+    }
+
+}
+
+/* =========================
+   ABOUT HERO
+========================= */
+
+.about-hero {
+    padding: 100px 0 80px;
+    background: linear-gradient(
+        135deg,
+        #f8f9fa 0%,
+        #eef7f2 100%
+    );
+}
+
+.about-hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-hero h1 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #18232e;
+    margin-bottom: 20px;
+}
+
+.about-hero p {
+    max-width: 650px;
+    margin: 0 auto;
+    color: #6c757d;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+
+/* =========================
+   ABOUT MISSION SECTION
+========================= */
+
+.about-section {
+    padding: 90px 0;
+    background-color: #ffffff;
+}
+
+.about-section h2 {
+    font-size: 2.4rem;
+    font-weight: 750;
+    color: #18232e;
+    margin-bottom: 20px;
+}
+
+.about-section p {
+    color: #6c757d;
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
+
+/* =========================
+   ABOUT INFO CARD
+========================= */
+
+.about-info-card {
+    background-color: #f8f9fa;
+    border: 1px solid #eceff1;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+}
+
+.about-info-card h3 {
+    color: #18232e;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.about-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.about-info-item:last-child {
+    margin-bottom: 0;
+}
+
+.about-info-item > span {
+    min-width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #dff3e8;
+    color: #198754;
+    border-radius: 50%;
+    font-weight: 800;
+}
+
+.about-info-item h5 {
+    color: #18232e;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.about-info-item p {
+    margin-bottom: 0;
+    font-size: 0.95rem;
+}
+
+
+/* =========================
+   ABOUT VALUES
+========================= */
+
+.about-values-section {
+    padding: 90px 0;
+    background-color: #f6f8f9;
+}
+
+.about-value-card {
+    height: 100%;
+    background-color: #ffffff;
+    padding: 35px 30px;
+    border-radius: 18px;
+    border: 1px solid #eceff1;
+    text-align: center;
+    transition: 0.25s;
+}
+
+.about-value-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+}
+
+.about-value-icon {
+    font-size: 2.4rem;
+    margin-bottom: 20px;
+}
+
+.about-value-card h4 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #18232e;
+    margin-bottom: 15px;
+}
+
+.about-value-card p {
+    color: #6c757d;
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+
+/* =========================
+   ABOUT RESPONSIVE
+========================= */
+
+@media (max-width: 991px) {
+
+    .about-hero {
+        padding: 80px 0 60px;
+    }
+
+    .about-hero h1 {
+        font-size: 2.7rem;
+    }
+
+    .about-info-card {
+        padding: 35px 30px;
+    }
+
+}
+
+@media (max-width: 767px) {
+
+    .about-hero h1 {
+        font-size: 2.3rem;
+    }
+
+    .about-section h2 {
+        font-size: 2rem;
+    }
+
+    .about-section,
+    .about-values-section {
+        padding: 70px 0;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .about-hero {
+        padding: 65px 0 50px;
+    }
+
+    .about-hero h1 {
+        font-size: 2rem;
+    }
+
+    .about-hero p {
+        font-size: 1rem;
+    }
+
+    .about-info-card {
+        padding: 28px 22px;
+    }
+
+    .about-value-card {
+        padding: 30px 22px;
+    }
+
+}
+
+
+/* =========================
+   LOGIN PAGE
+========================= */
+
+.login-section {
+    min-height: 78vh;
+    display: flex;
+    align-items: center;
+    padding: 80px 0;
+    background: linear-gradient(
+        135deg,
+        #f8f9fa 0%,
+        #eef7f2 100%
+    );
+}
+
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 520px;
+    background-color: #ffffff;
+    padding: 45px 40px;
+    border-radius: 20px;
+    border: 1px solid #eceff1;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+}
+
+.login-heading {
+    margin-bottom: 35px;
+}
+
+.login-heading h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #18232e;
+    margin-bottom: 12px;
+}
+
+.login-heading p {
+    color: #6c757d;
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+
+/* =========================
+   LOGIN FORM
+========================= */
+
+.login-card .form-label {
+    color: #18232e;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.helpora-input {
+    min-height: 50px;
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: 1px solid #d9dee3;
+    background-color: #ffffff;
+    transition: 0.2s;
+}
+
+.helpora-input:focus {
+    border-color: #198754;
+    box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.12);
+}
+
+.helpora-input::placeholder {
+    color: #a0a8af;
+}
+
+
+/* =========================
+   LOGIN OPTIONS
+========================= */
+
+.login-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin: 20px 0 30px;
+}
+
+.form-check-label {
+    color: #5f6872;
+    font-size: 0.95rem;
+}
+
+.form-check-input:checked {
+    background-color: #198754;
+    border-color: #198754;
+}
+
+.form-check-input:focus {
+    border-color: #198754;
+    box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.12);
+}
+
+.forgot-password {
+    color: #198754;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.forgot-password:hover {
+    color: #157347;
+}
+
+
+/* =========================
+   LOGIN BUTTON
+========================= */
+
+.login-button {
+    min-height: 50px;
+    font-size: 1rem;
+    margin-bottom: 25px;
+}
+
+
+/* =========================
+   LOGIN DIVIDER
+========================= */
+
+.login-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #9ba4ad;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.login-divider::before,
+.login-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: #e1e5e8;
+}
+
+.login-divider span {
+    padding: 0 15px;
+}
+
+
+/* =========================
+   REGISTER LINK
+========================= */
+
+.register-text {
+    color: #6c757d;
+    margin-bottom: 0;
+}
+
+.register-text a {
+    color: #198754;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.register-text a:hover {
+    color: #157347;
+}
+
+
+/* =========================
+   RESPONSIVE LOGIN
+========================= */
+
+@media (max-width: 576px) {
+
+    .login-section {
+        padding: 50px 15px;
+    }
+
+    .login-card {
+        padding: 35px 25px;
+    }
+
+    .login-heading h1 {
+        font-size: 1.9rem;
+    }
+
+    .login-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+}
+
+/* =========================
+   FLASH MESSAGES
+========================= */
+
+.flashes {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 25px 0;
+}
+
+.flashes li {
+    background-color: #f8d7da;
+    color: #842029;
+    border: 1px solid #f5c2c7;
+    padding: 12px 15px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.flashes li:last-child {
+    margin-bottom: 0;
+}
+
+/* =========================
+   ADMIN PAGE
+========================= */
+
+.admin-section {
+    padding: 80px 0;
+    background-color: #f6f8f9;
+    min-height: 100vh;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 45px;
+}
+
+.admin-header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #18232e;
+    margin-bottom: 10px;
+}
+
+.admin-header p {
+    color: #6c757d;
+    margin-bottom: 0;
+}
+
+
+/* =========================
+   ADMIN STAT CARDS
+========================= */
+
+.admin-stat-card {
+    height: 100%;
+    background-color: #ffffff;
+    padding: 28px;
+    border-radius: 18px;
+    border: 1px solid #eceff1;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+    transition: 0.25s;
+}
+
+.admin-stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+}
+
+.admin-stat-label {
+    display: block;
+    color: #6c757d;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.admin-stat-card h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #18232e;
+    margin-bottom: 8px;
+}
+
+.admin-stat-card p {
+    color: #9ba4ad;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+
+/* =========================
+   ADMIN PANELS
+========================= */
+
+.admin-panel {
+    background-color: #ffffff;
+    border-radius: 18px;
+    padding: 30px;
+    border: 1px solid #eceff1;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+}
+
+.admin-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.admin-panel-header h3 {
+    font-size: 1.5rem;
+    font-weight: 750;
+    color: #18232e;
+    margin-bottom: 6px;
+}
+
+.admin-panel-header p {
+    color: #6c757d;
+    margin-bottom: 0;
+}
+
+
+/* =========================
+   ADMIN TABLE
+========================= */
+
+.admin-table {
+    margin-bottom: 0;
+}
+
+.admin-table thead th {
+    color: #6c757d;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    border-bottom: 1px solid #e7eaed;
+    padding: 14px 12px;
+}
+
+.admin-table tbody td {
+    color: #39434d;
+    padding: 18px 12px;
+    vertical-align: middle;
+    border-bottom: 1px solid #f0f2f4;
+}
+
+.admin-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-table tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+
+/* =========================
+   ADMIN STATUS
+========================= */
+
+.admin-status {
+    display: inline-block;
+    padding: 6px 11px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.admin-status.pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.admin-status.approved {
+    background-color: #dff3e8;
+    color: #198754;
+}
+
+.admin-status.rejected {
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+
+/* =========================
+   ADMIN ACTION BUTTONS
+========================= */
+
+.admin-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.admin-actions .btn {
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 6px 12px;
+}
+
+
+/* =========================
+   ADMIN MANAGEMENT
+========================= */
+
+.admin-management {
+    margin-top: 50px;
+}
+
+.admin-management-card {
+    display: block;
+    height: 100%;
+    background-color: #ffffff;
+    border: 1px solid #eceff1;
+    border-radius: 18px;
+    padding: 30px;
+    text-decoration: none;
+    transition: 0.25s;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+}
+
+.admin-management-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+}
+
+.admin-management-card h4 {
+    color: #18232e;
+    font-size: 1.3rem;
+    font-weight: 750;
+    margin-bottom: 12px;
+}
+
+.admin-management-card p {
+    color: #6c757d;
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+
+/* =========================
+   ADMIN RESPONSIVE
+========================= */
+
+@media (max-width: 991px) {
+
+    .admin-section {
+        padding: 65px 0;
+    }
+
+    .admin-header h1 {
+        font-size: 2.2rem;
+    }
+
+}
+
+@media (max-width: 767px) {
+
+    .admin-panel {
+        padding: 22px;
+    }
+
+    .admin-header {
+        align-items: flex-start;
+    }
+
+    .admin-header h1 {
+        font-size: 2rem;
+    }
+
+    .admin-actions {
+        min-width: 200px;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .admin-section {
+        padding: 50px 0;
+    }
+
+    .admin-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .admin-stat-card {
+        padding: 22px;
+    }
+
+    .admin-panel {
+        padding: 18px;
+    }
+
+    .admin-management-card {
+        padding: 24px;
+    }
+
+}
+
+.campaign-description {
+    min-height: 170px;
+    resize: vertical;
+}
+
+.form-error {
+    color: #842029;
+    font-size: 0.9rem;
+    margin-top: 6px;
+}
+
+.form-flash-error {
+    background-color: #f8d7da;
+    color: #842029;
+    border: 1px solid #f5c2c7;
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* =========================
+   ALL CAMPAIGNS PAGE
+========================= */
+
+.campaign-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.campaign-filter-btn {
+    border-radius: 8px;
+    padding: 8px 18px;
+}
+
+.campaign-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.campaign-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.campaign-title {
+    min-height: 62px;
+}
+
+
+.campaign-description-preview {
+    max-height: 72px;
+    overflow: hidden;
+}
+
+.campaign-progress-section {
+    margin-top: auto;
+}
+
+.campaign-image {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+/* =========================
+   SINGLE CAMPAIGN PAGE
+========================= */
+
+.single-campaign-section {
+    padding: 80px 0 100px;
+    background-color: #f6f8f9;
+}
+
+.single-campaign-image-wrapper {
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+.single-campaign-image {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* =========================
+   CAMPAIGN CONTENT
+========================= */
+
+.single-campaign-content {
+    margin-top: 30px;
+    background-color: #ffffff;
+    padding: 35px;
+    border-radius: 18px;
+    border: 1px solid #eceff1;
+}
+
+.single-campaign-content h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: #18232e;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.single-campaign-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    color: #6c757d;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+}
+
+.single-campaign-meta strong {
+    color: #18232e;
+}
+
+.single-campaign-content hr {
+    border-color: #e7eaed;
+    margin: 25px 0;
+}
+
+.single-campaign-content h4 {
+    color: #18232e;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.single-campaign-description {
+    color: #5f6872;
+    line-height: 1.8;
+    margin-bottom: 0;
+}
+
+
+/* =========================
+   DONATION CARD
+========================= */
+
+.single-campaign-donation-card {
+    background-color: #ffffff;
+    padding: 35px;
+    border-radius: 20px;
+    border: 1px solid #eceff1;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+}
+
+.single-campaign-donation-card h2 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: #18232e;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.raised-text {
+    color: #6c757d;
+    margin-bottom: 25px;
+}
+
+.single-campaign-progress {
+    height: 12px;
+    border-radius: 20px;
+    background-color: #e9ecef;
+    margin-bottom: 30px;
+}
+
+.single-campaign-progress .progress-bar {
+    background-color: #198754;
+    border-radius: 20px;
+}
+
+
+/* =========================
+   CAMPAIGN STATS
+========================= */
+
+.single-campaign-stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.single-campaign-stats div {
+    flex: 1;
+    text-align: center;
+}
+
+.single-campaign-stats strong {
+    display: block;
+    color: #18232e;
+    font-size: 1.15rem;
+    margin-bottom: 5px;
+}
+
+.single-campaign-stats span {
+    color: #6c757d;
+    font-size: 0.85rem;
+}
+
+
+/* =========================
+   DONATE BUTTON
+========================= */
+
+.single-donate-btn {
+    min-height: 52px;
+    font-size: 1.05rem;
+}
+
+.donation-note {
+    color: #8a939c;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 991px) {
+
+    .single-campaign-section {
+        padding: 60px 0 80px;
+    }
+
+    .single-campaign-image {
+        height: 320px;
+    }
+
+    .single-campaign-content h1 {
+        font-size: 2rem;
+    }
+
+}
+
+
+@media (max-width: 767px) {
+
+    .single-campaign-section {
+        padding: 45px 0 65px;
+    }
+
+    .single-campaign-image {
+        height: 260px;
+    }
+
+    .single-campaign-content {
+        padding: 25px;
+    }
+
+    .single-campaign-donation-card {
+        padding: 25px;
+    }
+
+    .single-campaign-stats {
+        flex-direction: column;
+    }
+
+}
+
+.admin-status.approved {
+    background: #d1e7dd;
+    color: #0f5132;
+}
+
+/* =========================
+   EDIT HTML PAGE
+========================= */
+
+.edit-campaign-image {
+    width: 100%;
+    max-height: 280px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.edit-image-help {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 10px;
+}
+
+/* =========================
+   PROFILE PAGE
+========================= */
+
+.profile-section {
+    padding: 80px 0 100px;
+    background-color: #f6f8f9;
+    min-height: 100vh;
+}
+
+
+/* =========================
+   PROFILE HEADER
+========================= */
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    background-color: #ffffff;
+    padding: 35px 40px;
+    border-radius: 20px;
+    border: 1px solid #eceff1;
+    margin-bottom: 40px;
+}
+
+.profile-avatar {
+    width: 90px;
+    height: 90px;
+    min-width: 90px;
+    border-radius: 50%;
+    background-color: #198754;
+    color: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.profile-info h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #18232e;
+    margin: 5px 0 5px;
+}
+
+.profile-info p {
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+
+.profile-member-since {
+    color: #9ba4ad;
+    font-size: 0.9rem;
+}
+
+
+/* =========================
+   PROFILE STATISTICS
+========================= */
+
+.profile-stats {
+    margin-bottom: 50px;
+}
+
+.profile-stat-card {
+    height: 100%;
+    background-color: #ffffff;
+    border: 1px solid #eceff1;
+    border-radius: 18px;
+    padding: 28px 30px;
+    transition: 0.25s;
+}
+
+.profile-stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.profile-stat-card > span {
+    display: block;
+    color: #6c757d;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.profile-stat-card h2 {
+    color: #18232e;
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.profile-stat-card p {
+    color: #9ba4ad;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+
+/* =========================
+   PROFILE PANELS
+========================= */
+
+.profile-panel {
+    background-color: #ffffff;
+    border: 1px solid #eceff1;
+    border-radius: 20px;
+    padding: 35px;
+    margin-bottom: 45px;
+}
+
+.profile-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+.profile-panel-header h2 {
+    color: #18232e;
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.profile-panel-header p {
+    color: #6c757d;
+    margin-bottom: 0;
+}
+
+
+/* =========================
+   PROFILE CAMPAIGNS
+========================= */
+
+.profile-campaign-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.profile-panel .campaign-card {
+    border: 1px solid #eceff1;
+    box-shadow: none;
+}
+
+.profile-panel .campaign-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+}
+
+.profile-panel .campaign-image {
+    height: 210px;
+}
+
+
+/* =========================
+   EMPTY STATES
+========================= */
+
+.profile-empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    border: 1px dashed #d9dee3;
+    border-radius: 16px;
+    background-color: #f8f9fa;
+}
+
+.profile-empty-state h4 {
+    color: #18232e;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.profile-empty-state p {
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   PROFILE TABLE
+========================= */
+
+.profile-panel .admin-table {
+    margin-bottom: 0;
+}
+
+.profile-panel .admin-table tbody td {
+    padding-top: 18px;
+    padding-bottom: 18px;
+}
+
+
+/* =========================
+   RESPONSIVE PROFILE
+========================= */
+
+@media (max-width: 767px) {
+
+    .profile-section {
+        padding: 50px 0 70px;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 28px;
+    }
+
+    .profile-avatar {
+        width: 75px;
+        height: 75px;
+        min-width: 75px;
+        font-size: 1.7rem;
+    }
+
+    .profile-info h1 {
+        font-size: 1.8rem;
+    }
+
+    .profile-panel {
+        padding: 25px;
+    }
+
+    .profile-panel-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .profile-panel-header .btn {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .profile-section {
+        padding: 40px 0 60px;
+    }
+
+    .profile-header {
+        padding: 22px;
+    }
+
+    .profile-panel {
+        padding: 20px;
+    }
+
+    .profile-panel .campaign-image {
+        height: 190px;
+    }
+
+}
+
+
+.profile-campaign-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.profile-campaign-actions .btn {
+    flex: 1;
+}
+
+.profile-delete-form {
+    flex: 1;
+    display: flex;
+}
+
+.profile-delete-form button {
+    width: 100%;
+}
+
+@media (max-width: 576px) {
+    .profile-campaign-actions {
+        flex-direction: column;
+    }
+
+    .profile-delete-form {
+        width: 100%;
+    }
+}
+
+
+/* =========================
+   DONATION PAGE
+========================= */
+
+.donation-section {
+    padding: 80px 0 100px;
+    background-color: #f6f8f9;
+    min-height: 100vh;
+}
+
+
+/* =========================
+   CAMPAIGN CARD
+========================= */
+
+.donation-campaign-card {
+    background-color: #ffffff;
+    border: 1px solid #eceff1;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.donation-campaign-image {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    display: block;
+}
+
+.donation-campaign-content {
+    padding: 30px;
+}
+
+.donation-campaign-content h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #18232e;
+    margin: 15px 0;
+}
+
+.donation-campaign-content p {
+    color: #6c757d;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.donation-campaign-goal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid #eceff1;
+}
+
+.donation-campaign-goal span {
+    color: #6c757d;
+}
+
+.donation-campaign-goal strong {
+    color: #198754;
+    font-size: 1.3rem;
+}
+
+
+/* =========================
+   DONATION FORM CARD
+========================= */
+
+.donation-form-card {
+    background-color: #ffffff;
+    border: 1px solid #eceff1;
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+}
+
+.donation-heading {
+    margin-bottom: 30px;
+}
+
+.donation-heading h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #18232e;
+    margin: 10px 0;
+}
+
+.donation-heading p {
+    color: #6c757d;
+    margin-bottom: 0;
+}
+
+
+/* =========================
+   AMOUNT INPUT
+========================= */
+
+.donation-amount-wrapper {
+    position: relative;
+}
+
+.donation-currency {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #198754;
+    font-weight: 700;
+    z-index: 2;
+}
+
+.donation-amount-input {
+    padding-left: 38px;
+    font-size: 1.05rem;
+}
+
+
+/* =========================
+   QUICK AMOUNTS
+========================= */
+
+.donation-quick-amounts {
+    margin-bottom: 25px;
+}
+
+.donation-quick-amounts > span {
+    display: block;
+    color: #18232e;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.donation-amount-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.donation-amount-buttons .btn {
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   INFO BOX
+========================= */
+
+.donation-info-box {
+    background-color: #eef7f2;
+    border: 1px solid #dff3e8;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 25px;
+}
+
+.donation-info-box p {
+    color: #4f6458;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+
+/* =========================
+   DONATE BUTTON
+========================= */
+
+.donation-submit-btn {
+    min-height: 52px;
+    font-size: 1.05rem;
+}
+
+.donation-security-text {
+    text-align: center;
+    color: #8a939c;
+    font-size: 0.9rem;
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 991px) {
+
+    .donation-section {
+        padding: 60px 0 80px;
+    }
+
+    .donation-campaign-image {
+        height: 320px;
+    }
+
+}
+
+@media (max-width: 767px) {
+
+    .donation-section {
+        padding: 45px 0 65px;
+    }
+
+    .donation-campaign-image {
+        height: 260px;
+    }
+
+    .donation-form-card,
+    .donation-campaign-content {
+        padding: 25px;
+    }
+
+    .donation-amount-buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .donation-form-card,
+    .donation-campaign-content {
+        padding: 20px;
+    }
+
+    .donation-heading h2,
+    .donation-campaign-content h1 {
+        font-size: 1.7rem;
+    }
+
+}
+
+
+/* =========================
+   SUCCESS DONATION PAGE
+========================= */
+
+.success-donation-section {
+    min-height: 78vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 90px 0;
+    background: linear-gradient(
+        135deg,
+        #f8f9fa 0%,
+        #eef7f2 100%
+    );
+}
+
+.success-donation-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.success-donation-card {
+    width: 100%;
+    max-width: 620px;
+    background-color: #ffffff;
+    padding: 55px 45px;
+    border-radius: 24px;
+    border: 1px solid #e8ecef;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
+}
+
+.success-donation-icon {
+    width: 85px;
+    height: 85px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 25px;
+
+    border-radius: 50%;
+
+    background-color: #dff3e8;
+    color: #198754;
+
+    font-size: 2.5rem;
+    font-weight: 800;
+
+    border: 6px solid #eef8f2;
+}
+
+.success-donation-card .section-label {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.success-donation-card h1 {
+    color: #18232e;
+    font-size: 2.4rem;
+    font-weight: 800;
+    margin-bottom: 18px;
+}
+
+.success-donation-card p {
+    color: #6c757d;
+    font-size: 1rem;
+    line-height: 1.8;
+
+    max-width: 460px;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 32px;
+}
+
+
+/* =========================
+   SUCCESS BUTTONS
+========================= */
+
+.success-donation-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.success-donation-actions .btn {
+    min-width: 165px;
+    min-height: 48px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 767px) {
+
+    .success-donation-section {
+        padding: 60px 15px;
+    }
+
+    .success-donation-card {
+        padding: 45px 30px;
+    }
+
+    .success-donation-card h1 {
+        font-size: 2rem;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .success-donation-card {
+        padding: 40px 22px;
+    }
+
+    .success-donation-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+    }
+
+    .success-donation-actions {
+        flex-direction: column;
+    }
+
+    .success-donation-actions .btn {
+        width: 100%;
+    }
+
+}
+
+.profile-settings-action {
+    margin-left: auto;
+}
+
+.profile-settings-action .btn {
+    min-width: 120px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+@media (max-width: 767px) {
+    .profile-settings-action {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .profile-settings-action .btn {
+        width: 100%;
+    }
+}
+
+/* =========================
+   PROFILE SETTINGS
+========================= */
+
+.settings-section {
+    padding: 80px 0 100px;
+    background-color: #f6f8f9;
+    min-height: 100vh;
+}
+
+.settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.settings-header h1 {
+    color: #18232e;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 8px 0 10px;
+}
+
+.settings-header p {
+    color: #6c757d;
+    margin-bottom: 0;
+}
+
+
+/* SETTINGS CARD */
+
+.settings-card {
+    max-width: 850px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #e8ecef;
+    border-radius: 18px;
+
+    padding: 35px;
+
+    margin-bottom: 30px;
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+}
+
+.settings-card-header {
+    padding-bottom: 22px;
+    margin-bottom: 25px;
+
+    border-bottom: 1px solid #eceff1;
+}
+
+.settings-card-header h3 {
+    color: #18232e;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.settings-card-header p {
+    color: #6c757d;
+    margin-bottom: 0;
+}
+
+
+/* FORM */
+
+.settings-card .form-label {
+    color: #18232e;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.settings-card .helpora-input {
+    min-height: 48px;
+
+    border: 1px solid #dfe3e6;
+    border-radius: 10px;
+
+    padding: 10px 14px;
+}
+
+.settings-card .helpora-input:focus {
+    border-color: #198754;
+    box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.1);
+}
+
+.form-error {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 6px;
+}
+
+
+/* DANGER ZONE */
+
+.settings-danger {
+    border-color: #f1c5c9;
+}
+
+.settings-danger-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.settings-danger-label {
+    display: inline-block;
+
+    color: #dc3545;
+
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+
+    margin-bottom: 8px;
+}
+
+.settings-danger h3 {
+    color: #18232e;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.settings-danger p {
+    color: #6c757d;
+    margin-bottom: 0;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 767px) {
+
+    .settings-section {
+        padding: 50px 0 70px;
+    }
+
+    .settings-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .settings-header h1 {
+        font-size: 2rem;
+    }
+
+    .settings-card {
+        padding: 25px;
+    }
+
+    .settings-danger-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}

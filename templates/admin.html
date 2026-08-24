@@ -1,0 +1,436 @@
+{% extends "base.html" %}
+
+{% block title %}
+Admin Dashboard | Helpora
+{% endblock %}
+
+{% block content %}
+
+<section class="admin-section">
+    <div class="container">
+
+        <div class="admin-header">
+
+            <div>
+                <span class="section-label">
+                    Administration
+                </span>
+
+                <h1>
+                    Admin Dashboard
+                </h1>
+
+                <p>
+                    Manage users, campaigns and donation activity.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- STATISTICS -->
+        <div class="row g-4 mb-5">
+
+            <div class="col-lg-3 col-md-6">
+                <div class="admin-stat-card">
+
+                    <span class="admin-stat-label">
+                        Total Users
+                    </span>
+
+                    <h2>
+                        {{users | length}}
+                    </h2>
+
+                    <p>
+                        Registered users
+                    </p>
+
+                </div>
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+                <div class="admin-stat-card">
+
+                    <span class="admin-stat-label">
+                        Active Campaigns
+                    </span>
+
+                    <h2>
+                        {{ all_campaigns | length}}
+                    </h2>
+
+                    <p>
+                        Currently active
+                    </p>
+
+                </div>
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+                <div class="admin-stat-card">
+
+                    <span class="admin-stat-label">
+                        Pending Campaigns
+                    </span>
+
+                    <h2>
+                        {{ pending_campaigns | length}}
+                    </h2>
+
+                    <p>
+                        Waiting for approval
+                    </p>
+
+                </div>
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+                <div class="admin-stat-card">
+
+                    <span class="admin-stat-label">
+                        Total Donations
+                    </span>
+
+                    <h2>
+                        {{ all_donations | map(attribute='amount') | sum }}
+                    </h2>
+
+                    <p>
+                        Donated through Helpora
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- PENDING CAMPAIGNS -->
+        <div class="admin-panel mt-5">
+
+            <div class="admin-panel-header">
+
+                <div>
+                    <h3>
+                        Pending Campaigns
+                    </h3>
+
+                    <p>
+                        Review campaigns before they become publicly visible.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="table-responsive">
+
+                <table class="table admin-table align-middle">
+
+                    <thead>
+                        <tr>
+                            <th>Campaign</th>
+                            <th>Created By</th>
+                            <th>Category</th>
+                            <th>Goal</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        
+                        {% for campaign in pending_campaigns %}
+                        <tr>
+                            <td>
+                                {{campaign.title}}
+                            </td>
+
+                            <td>
+                                {{campaign.user.name}}
+                            </td>
+
+                            <td>
+                                {{campaign.category}}
+                            </td>
+
+                            <td>
+                                {{ campaign.goal_amount}}
+                            </td>
+
+                            <td>
+                                <span class="admin-status approved">
+                                    {{campaign.status}}
+                                </span>
+                            </td>
+
+                            <td>
+                                <div class="admin-actions">
+
+                                    <a href="{{url_for('change_status', campaign_id=campaign.id, action='approve')}}" class="btn btn-sm helpora-btn">
+                                        Approve
+                                    </a>
+
+                                    <a href="{{url_for('change_status', campaign_id=campaign.id, action='reject')}}" class="btn btn-sm btn-outline-danger">
+                                        Reject
+                                    </a>
+
+                                    <a href="#" class="btn btn-sm btn-outline-dark">
+                                        View
+                                    </a>
+
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor%}
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-panel mt-5">
+
+            <div class="admin-panel-header">
+
+                <div>
+                    <h3>
+                        Approved Campaigns
+                    </h3>
+
+                    <p>
+                        Review approved campaigns.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="table-responsive">
+
+                <table class="table admin-table align-middle">
+
+                    <thead>
+                        <tr>
+                            <th>Campaign</th>
+                            <th>Created By</th>
+                            <th>Category</th>
+                            <th>Goal</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        
+                        {% for campaign in approved_campaigns %}
+                        <tr>
+                            <td>
+                                {{campaign.title}}
+                            </td>
+
+                            <td>
+                                {{campaign.user.name}}
+                            </td>
+
+                            <td>
+                                {{campaign.category}}
+                            </td>
+
+                            <td>
+                                {{ campaign.goal_amount}}
+                            </td>
+
+                            <td>
+                                <span class="admin-status pending">
+                                    {{campaign.status}}
+                                </span>
+                            </td>
+
+                            <td>
+                                <div class="admin-actions">
+
+                                    <a
+                                        href="{{ url_for('edit_campaign', campaign_id=campaign.id) }}"
+                                        class="btn btn-sm helpora-btn"
+                                    >
+                                        Edit
+                                    </a>
+
+                                    <form
+                                        action="{{ url_for('delete_campaign', campaign_id=campaign.id) }}"
+                                        method="POST"
+                                        class="d-inline"
+                                    >
+                                        <button
+                                            type="submit"
+                                            class="btn btn-sm btn-outline-danger"
+                                        >
+                                            Delete
+                                        </button>
+                                    </form>
+
+                                    <a href="#" class="btn btn-sm btn-outline-dark">
+                                        View
+                                    </a>
+
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor%}
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- RECENT DONATIONS -->
+        <div class="admin-panel mt-5">
+
+            <div class="admin-panel-header">
+
+                <div>
+                    <h3>
+                        Recent Donations
+                    </h3>
+
+                    <p>
+                        Latest donation activity across Helpora.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="table-responsive">
+
+                <table class="table admin-table align-middle">
+
+                    <thead>
+                        <tr>
+                            <th>Donor</th>
+                            <th>Campaign</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for donation in all_donations[-10:] %}
+                        <tr>
+                            <td>
+                                {{ donation.donator.name }}
+                            </td>
+
+                            <td>
+                                {{ donation.campaign.title }}
+                            </td>
+
+                            <td>
+                                <strong>€{{donation.amount}}</strong>
+                            </td>
+
+                            <td>
+                                {{ donation.donated_at }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- ADMIN MANAGEMENT -->
+        <div class="admin-management mt-5">
+
+            <div class="section-heading">
+                <span class="section-label">
+                    Management
+                </span>
+
+                <h2>
+                    Manage Helpora
+                </h2>
+            </div>
+
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+
+                    <a href="#" class="admin-management-card">
+
+                        <h4>
+                            Campaigns
+                        </h4>
+
+                        <p>
+                            Review, approve, reject and manage campaigns.
+                        </p>
+
+                    </a>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <a href="#" class="admin-management-card">
+
+                        <h4>
+                            Users
+                        </h4>
+
+                        <p>
+                            View registered users and their activity.
+                        </p>
+
+                    </a>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <a href="#" class="admin-management-card">
+
+                        <h4>
+                            Donations
+                        </h4>
+
+                        <p>
+                            Review donation records and transaction history.
+                        </p>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ campaign.title }} | Helpora
+{% endblock %}
+
+{% block content %}
+
+<section class="single-campaign-section">
+
+    <div class="container">
+
+        <div class="row g-5 align-items-start">
+
+            <!-- LEFT SIDE -->
+            <div class="col-lg-7">
+
+                <div class="single-campaign-image-wrapper">
+
+                    <img
+                        src="{{ url_for('static', filename='uploads/' + campaign.image_url) }}"
+                        class="single-campaign-image"
+                        alt="{{ campaign.title }}"
+                    >
+
+                </div>
+
+                <div class="single-campaign-content">
+
+                    <span class="campaign-category">
+                        {{ campaign.category }}
+                    </span>
+
+                    <h1>
+                        {{ campaign.title }}
+                    </h1>
+
+                    <div class="single-campaign-meta">
+
+                        <span>
+                            Created by:
+                            <strong>{{ campaign.user.name }}</strong>
+                        </span>
+
+                        <span>
+                            {{ campaign.created_at.strftime('%d %b %Y') }}
+                        </span>
+
+                    </div>
+
+                    <hr>
+
+                    <h4>
+                        About this campaign
+                    </h4>
+
+                    <p class="single-campaign-description">
+                        {{ campaign.description }}
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT SIDE -->
+            <div class="col-lg-5">
+
+                <div class="single-campaign-donation-card">
+
+                    <span class="section-label">
+                        Fundraising progress
+                    </span>
+
+                    <h2>
+                        €0
+                    </h2>
+
+                    <p class="raised-text">
+                        raised of
+                        <strong>€{{ campaign.goal_amount }}</strong>
+                    </p>
+
+
+                    <div class="progress single-campaign-progress">
+
+                        <div
+                            class="progress-bar"
+                            style="width: 0%;">
+                        </div>
+
+                    </div>
+
+
+                    <div class="single-campaign-stats">
+
+                        <div>
+                            <strong>€ {{campaign.donations | map(attribute='amount') | sum}}</strong>
+                            <span>Raised</span>
+                        </div>
+
+                        <div>
+                            <strong>€{{ campaign.goal_amount }}</strong>
+                            <span>Goal</span>
+                        </div>
+
+                        <div>
+                            <strong>0</strong>
+                            <span>Donations</span>
+                        </div>
+
+                    </div>
+
+
+                    <a href="{{url_for('donate', campaign_id=campaign.id)}}" class="btn helpora-btn w-100 single-donate-btn">
+                        Donate Now
+                    </a>
+
+
+                    <p class="donation-note">
+                        Every contribution can make a difference.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

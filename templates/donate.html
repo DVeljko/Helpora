@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block title %}
+Donate | Helpora
+{% endblock %}
+
+{% block content %}
+
+<section class="donation-section">
+
+    <div class="container">
+
+        <div class="row g-5 align-items-start">
+
+            <div class="donation-campaign-card">
+
+                <img
+                    src="{{ url_for('static', filename='uploads/' + campaign.image_url) }}"
+                    alt="{{ campaign.title }}"
+                    class="donation-campaign-image"
+                >
+
+                <div class="donation-campaign-content">
+
+                    <span class="campaign-category">
+                        {{ campaign.category }}
+                    </span>
+
+                    <h1>
+                        {{ campaign.title }}
+                    </h1>
+
+                    <p>
+                        {{ campaign.description }}
+                    </p>
+
+
+                    <div class="donation-campaign-goal">
+
+                        <div class="donation-current">
+
+                            <span>
+                                Donated so far
+                            </span>
+
+                            <strong>
+                                €{{ campaign.donations | map(attribute='amount') | sum }}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="donation-goal">
+
+                            <span>
+                                Goal
+                            </span>
+
+                            <strong>
+                                €{{ campaign.goal_amount }}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DONATION FORM -->
+            <div class="col-lg-6">
+
+                <div class="donation-form-card">
+
+                    <div class="donation-heading">
+
+                        <span class="section-label">
+                            Make a Donation
+                        </span>
+
+                        <h2>
+                            Support this campaign
+                        </h2>
+
+                        <p>
+                            Choose the amount you would like to donate.
+                        </p>
+
+                    </div>
+
+
+                    <form method="POST">
+
+                        {{ form.hidden_tag() }}
+
+
+                        <!-- AMOUNT -->
+                        <div class="mb-4">
+
+                            {{ form.amount.label(class="form-label") }}
+
+                            <div class="donation-amount-wrapper">
+
+                                <span class="donation-currency">
+                                    €
+                                </span>
+
+                                {{ form.amount(
+                                    class="form-control helpora-input donation-amount-input",
+                                    placeholder="Enter amount"
+                                ) }}
+
+                            </div>
+
+                            {% for error in form.amount.errors %}
+                                <div class="form-error">
+                                    {{ error }}
+                                </div>
+                            {% endfor %}
+
+                        </div>
+
+
+                        <!-- INFORMATION -->
+                        <div class="donation-info-box">
+
+                            <p>
+                                Your donation will be recorded in Helpora's
+                                donation history and connected to this campaign.
+                            </p>
+
+                        </div>
+
+
+                        {{ form.submit(
+                            class="btn helpora-btn w-100 donation-submit-btn"
+                        ) }}
+
+                    </form>
+
+
+                    <p class="donation-security-text">
+                        Thank you for supporting someone in need.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

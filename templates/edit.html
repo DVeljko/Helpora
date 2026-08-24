@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Edit Campaign | Helpora
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="login-section">
+
+    <div class="container">
+
+        <div class="login-wrapper">
+
+            <div class="login-card">
+
+
+                <div class="login-heading text-center">
+
+                    <span class="section-label">
+                        Admin Panel
+                    </span>
+
+                    <h1>
+                        Edit Campaign
+                    </h1>
+
+                    <p>
+                        Update the campaign information below
+                        and save your changes.
+                    </p>
+
+                </div>
+
+
+                <form
+                    method="POST"
+                    enctype="multipart/form-data"
+                    action="{{ url_for('edit_campaign', campaign_id=campaign.id) }}"
+                >
+
+                    {{ form.hidden_tag() }}
+
+
+                    <!-- TITLE -->
+                    <div class="mb-4">
+
+                        {{ form.title.label(class="form-label") }}
+
+                        {{ form.title(
+                            class="form-control helpora-input"
+                        ) }}
+
+                        {% for error in form.title.errors %}
+                            <div class="form-error">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+
+                    <!-- DESCRIPTION -->
+                    <div class="mb-4">
+
+                        {{ form.description.label(class="form-label") }}
+
+                        {{ form.description(
+                            class="form-control helpora-input campaign-description"
+                        ) }}
+
+                        {% for error in form.description.errors %}
+                            <div class="form-error">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+
+                    <!-- CATEGORY -->
+                    <div class="mb-4">
+
+                        {{ form.category.label(class="form-label") }}
+
+                        {{ form.category(
+                            class="form-control helpora-input"
+                        ) }}
+
+                        {% for error in form.category.errors %}
+                            <div class="form-error">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+
+                    <!-- GOAL AMOUNT -->
+                    <div class="mb-4">
+
+                        {{ form.goal_amount.label(class="form-label") }}
+
+                        {{ form.goal_amount(
+                            class="form-control helpora-input"
+                        ) }}
+
+                        {% for error in form.goal_amount.errors %}
+                            <div class="form-error">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+
+                    <!-- CURRENT IMAGE -->
+                    <div class="mb-4">
+
+                        <label class="form-label">
+                            Current Campaign Image
+                        </label>
+
+                        <div class="mb-3">
+
+                            <img
+                                src="{{ url_for('static', filename='uploads/' + campaign.image_url) }}"
+                                alt="{{ campaign.title }}"
+                                class="edit-campaign-image"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- NEW IMAGE -->
+                    <div class="mb-4">
+
+                        {{ form.image.label(class="form-label") }}
+
+                        <p class="edit-image-help">
+                            Leave this empty if you want to keep the current image.
+                        </p>
+
+                        {{ form.image(
+                            class="form-control helpora-input"
+                        ) }}
+
+                        {% for error in form.image.errors %}
+                            <div class="form-error">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+
+                    <!-- SAVE -->
+                    {{ form.submit(
+                        class="btn helpora-btn w-100 login-button"
+                    ) }}
+
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+{% endblock %}

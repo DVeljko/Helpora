@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% block title %}
+Create Campaign | Helpora
+{% endblock %}
+
+{% block content %}
+
+<section class="login-section">
+
+    <div class="container">
+
+        <div class="login-wrapper">
+
+            <div class="login-card">
+
+                <div class="login-heading text-center">
+
+                    <span class="section-label">
+                        Start a Campaign
+                    </span>
+
+                    <h1>
+                        Create a new campaign
+                    </h1>
+
+                    <p>
+                        Tell your story, explain why help is needed
+                        and set a fundraising goal.
+                    </p>
+
+                </div>
+
+
+                <form method="POST" enctype="multipart/form-data" action="{{url_for('add_campaign')}}">
+
+                    {{ form.hidden_tag() }}
+
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages%}
+                                <li class="form-flash-error">{{message}}</li>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+
+
+                    <div class="mb-4">
+
+                        {{ form.title.label(class="form-label") }}
+
+                        {{ form.title(
+                            class="form-control helpora-input",
+                            placeholder="Enter campaign title"
+                        ) }}
+
+                        {% for error in form.title.errors %}
+                            <div class="form-error">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+
+                    <div class="mb-4">
+
+                        {{ form.description.label(class="form-label") }}
+
+                        {{ form.description(
+                            class="form-control helpora-input campaign-description",
+                            placeholder="Describe the situation and why help is needed"
+                        ) }}
+
+                        {% for error in form.description.errors %}
+                            <div class="form-error">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+
+                    <div class="mb-4">
+
+                        {{ form.category.label(class="form-label") }}
+
+                        {{ form.category(
+                            class="form-control helpora-input",
+                            placeholder="Medical, Housing, Financial Support..."
+                        ) }}
+
+                        {% for error in form.category.errors %}
+                            <div class="form-error">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+
+                    <div class="mb-4">
+
+                        {{ form.goal_amount.label(class="form-label") }}
+
+                        {{ form.goal_amount(
+                            class="form-control helpora-input",
+                            placeholder="Enter fundraising goal"
+                        ) }}
+
+                        {% for error in form.goal_amount.errors %}
+                            <div class="form-error">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+
+                    <div class="mb-4">
+
+                        {{ form.image.label(class="form-label") }}
+
+                        {{ form.image(
+                            class="form-control helpora-input"
+                        ) }}
+
+                        {% for error in form.image.errors %}
+                            <div class="form-error">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+
+                    {{ form.submit(
+                        class="btn helpora-btn w-100 login-button"
+                    ) }}
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

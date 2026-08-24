@@ -1,0 +1,404 @@
+{% extends "base.html" %}
+
+{% block title %}
+Helpora | Home
+{% endblock %}
+
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center min-vh-75">
+
+            <div class="col-lg-6">
+
+                <span class="hero-badge">
+                    Together we can make a difference
+                </span>
+
+                <h1 class="hero-title">
+                    Help someone change their life.
+                </h1>
+
+                <p class="hero-text">
+                    Helpora connects people who need support with people
+                    who are ready to help. Support medical treatments,
+                    families in financial need and people living in
+                    difficult conditions.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="{{url_for('all_campaigns')}}" class="btn helpora-btn btn-lg">
+                        Explore Campaigns
+                    </a>
+
+                    <a href="{{url_for('add_campaign')}}" class="btn btn-outline-dark btn-lg">
+                        Start a Campaign
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-6 text-center mt-5 mt-lg-0">
+
+                <div class="hero-card">
+
+                    <h3>Every donation matters.</h3>
+
+                    <p>
+                        Even a small contribution can bring someone
+                        closer to the help they need.
+                    </p>
+
+                    <div class="hero-stats">
+
+                        <div>
+                            <h4>120+</h4>
+                            <span>Campaigns</span>
+                        </div>
+
+                        <div>
+                            <h4>850+</h4>
+                            <span>Donations</span>
+                        </div>
+
+                        <div>
+                            <h4>95+</h4>
+                            <span>People Helped</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- HELP CATEGORIES -->
+<section class="categories-section">
+    <div class="container">
+
+        <div class="section-heading text-center">
+
+            <span class="section-label">
+                Ways to help
+            </span>
+
+            <h2>
+                Choose who you want to support
+            </h2>
+
+            <p>
+                Help people facing different challenges and difficult
+                situations.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="category-card">
+
+                    <div class="category-icon">
+                        ❤️
+                    </div>
+
+                    <h4>
+                        Medical Treatment
+                    </h4>
+
+                    <p>
+                        Help people raise funds for surgeries,
+                        treatments, medication and recovery.
+                    </p>
+
+                    <a href="{{url_for('all_campaigns')}}">
+                        View campaigns →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="category-card">
+
+                    <div class="category-icon">
+                        🏠
+                    </div>
+
+                    <h4>
+                        Living Conditions
+                    </h4>
+
+                    <p>
+                        Support families and individuals living in
+                        unsafe or difficult housing conditions.
+                    </p>
+
+                    <a href="{{url_for('all_campaigns')}}">
+                        View campaigns →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="category-card">
+
+                    <div class="category-icon">
+                        🤝
+                    </div>
+
+                    <h4>
+                        Financial Support
+                    </h4>
+
+                    <p>
+                        Help people experiencing financial hardship
+                        get back on their feet.
+                    </p>
+
+                    <a href="{{url_for('all_campaigns')}}">
+                        View campaigns →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- FEATURED CAMPAIGNS -->
+<section class="campaigns-section">
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                Featured campaigns
+            </span>
+
+            <h2>
+                People who need your help
+            </h2>
+
+            <p>
+                Support active campaigns and help them reach their goal.
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+    {% for campaign in campaigns[-3:] %}
+
+        <div class="col-lg-4 col-md-6">
+
+            <div class="campaign-card h-100">
+
+                <img
+                    src="{{ url_for('static', filename='uploads/' + campaign.image_url) }}"
+                    class="campaign-image"
+                    alt="{{ campaign.title }}"
+                >
+
+                <div class="campaign-body d-flex flex-column">
+
+                    <span class="campaign-category">
+                        {{ campaign.category }}
+                    </span>
+
+                    <h4 class="campaign-title">
+                        {{ campaign.title }}
+                    </h4>
+
+                    <p class="campaign-description-preview">
+                        {{ campaign.description }}
+                    </p>
+
+                    <div class="campaign-progress-section mt-auto">
+
+                        <div class="progress">
+                            <div
+                                class="progress-bar"
+                                style="width: 0%;">
+                            </div>
+                        </div>
+
+                        <div class="campaign-money">
+
+                            <span>
+                                <strong>€0</strong> raised
+                            </span>
+
+                            <span>
+                                Goal: €{{ campaign.goal_amount }}
+                            </span>
+
+                        </div>
+
+                        <a href="{{url_for('single_campaign', campaign_id=campaign.id)}}" class="btn helpora-btn w-100">
+                            View Campaign
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    {% endfor %}
+
+</div>
+
+        <div class="text-center mt-5">
+
+            <a href="{{url_for('all_campaigns')}}" class="btn btn-outline-dark">
+                View All Campaigns
+            </a>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works-section">
+    <div class="container">
+
+        <div class="section-heading text-center">
+
+            <span class="section-label">
+                How it works
+            </span>
+
+            <h2>
+                Helping is simple
+            </h2>
+
+        </div>
+
+
+        <div class="row g-4 text-center">
+
+            <div class="col-md-4">
+
+                <div class="step-card">
+
+                    <div class="step-number">
+                        1
+                    </div>
+
+                    <h4>
+                        Find a Campaign
+                    </h4>
+
+                    <p>
+                        Browse verified campaigns and choose someone
+                        you want to support.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="step-card">
+
+                    <div class="step-number">
+                        2
+                    </div>
+
+                    <h4>
+                        Make a Donation
+                    </h4>
+
+                    <p>
+                        Choose the amount you want to donate and
+                        support the campaign.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="step-card">
+
+                    <div class="step-number">
+                        3
+                    </div>
+
+                    <h4>
+                        Make an Impact
+                    </h4>
+
+                    <p>
+                        Your donation becomes part of a transparent
+                        record of support for the campaign.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- CTA SECTION -->
+<section class="cta-section">
+    <div class="container">
+
+        <div class="cta-box text-center">
+
+            <h2>
+                Someone may need your help today.
+            </h2>
+
+            <p>
+                Explore active campaigns and be part of someone's
+                journey toward a better life.
+            </p>
+
+            <a href="{{url_for('all_campaigns')}}" class="btn helpora-btn btn-lg">
+                Help Someone
+            </a>
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

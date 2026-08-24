@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block title %}
+All Campaigns | Helpora
+{% endblock %}
+
+
+{% block content %}
+
+<section class="campaigns-section">
+
+    <div class="container">
+
+        <div class="section-heading text-center">
+
+            <span class="section-label">
+                All Campaigns
+            </span>
+
+            <h2>
+                Support someone who needs help
+            </h2>
+
+            <p>
+                Browse active campaigns and choose who you want to support.
+            </p>
+
+        </div>
+
+
+        <!-- FILTERS -->
+        <div class="campaign-filters text-center mb-5">
+
+            <a
+                href="{{ url_for('all_campaigns') }}"
+                class="btn {{ 'helpora-btn' if not category else 'btn-outline-dark' }}"
+            >
+                All
+            </a>
+
+            <a
+                href="{{ url_for('all_campaigns', category='medical') }}"
+                class="btn {{ 'helpora-btn' if category == 'medical' else 'btn-outline-dark' }}"
+            >
+                Medical
+            </a>
+
+            <a
+                href="{{ url_for('all_campaigns', category='housing') }}"
+                class="btn {{ 'helpora-btn' if category == 'housing' else 'btn-outline-dark' }}"
+            >
+                Housing
+            </a>
+
+            <a
+                href="{{ url_for('all_campaigns', category='financial') }}"
+                class="btn {{ 'helpora-btn' if category == 'financial' else 'btn-outline-dark' }}"
+            >
+                Financial Support
+            </a>
+
+        </div>
+
+
+        <!-- CAMPAIGNS -->
+        <div class="row g-4">
+
+            {% for campaign in campaigns %}
+
+                {% set donated = campaign.donations | map(attribute='amount') | sum %}
+                {% set progress = (donated / campaign.goal_amount * 100) if campaign.goal_amount else 0 %}
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="campaign-card h-100">
+
+                    <img
+                        src="{{ url_for(
+                            'static',
+                            filename='uploads/' + campaign.image_url
+                        ) }}"
+                        class="campaign-image"
+                        alt="{{ campaign.title }}"
+                    >
+
+                    <div class="campaign-body d-flex flex-column">
+
+                        <span class="campaign-category">
+                            {{ campaign.category }}
+                        </span>
+
+                        <h4 class="campaign-title">
+                            {{ campaign.title }}
+                        </h4>
+
+                        <p class="campaign-description-preview">
+                            {{ campaign.description }}
+                        </p>
+
+
+                        <div class="campaign-progress-section mt-auto">
+
+                            <div class="progress">
+
+                                <div
+                                    class="progress-bar"
+                                    style="width: {{ progress }}%;">
+                                </div>
+
+                            </div>
+
+
+                            <div class="campaign-money">
+
+                                <span>
+                                    <strong>€ {{ donated }}</strong> raised
+                                </span>
+
+                                <span>
+                                    Goal: €{{ campaign.goal_amount }}
+                                </span>
+
+                            </div>
+
+
+                            <a href="{{url_for('single_campaign', campaign_id=campaign.id)}}" class="btn helpora-btn w-100">
+                                View Campaign
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

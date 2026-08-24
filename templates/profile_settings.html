@@ -1,0 +1,250 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Profile Settings | Helpora
+{% endblock %}
+
+
+{% block content %}
+
+<section class="settings-section">
+
+    <div class="container">
+
+
+        <!-- SETTINGS HEADER -->
+        <div class="settings-header">
+
+            <div>
+
+                <span class="section-label">
+                    Account
+                </span>
+
+                <h1>
+                    Profile Settings
+                </h1>
+
+                <p>
+                    Manage your personal information and account security.
+                </p>
+
+            </div>
+
+
+            <a
+                href="{{ url_for('my_profile') }}"
+                class="btn btn-outline-dark"
+            >
+                Back to Profile
+            </a>
+
+        </div>
+
+
+
+        <!-- PERSONAL INFORMATION -->
+        <div class="settings-card">
+
+            <div class="settings-card-header">
+
+                <h3>
+                    Personal Information
+                </h3>
+
+                <p>
+                    Update your name and email address.
+                </p>
+
+            </div>
+
+
+            <form method="POST">
+
+                {{ profile_form.hidden_tag() }}
+
+
+                <div class="mb-4">
+
+                    {{ profile_form.name.label(class="form-label") }}
+
+                    {{ profile_form.name(
+                        class="form-control helpora-input"
+                    ) }}
+
+                    {% for error in profile_form.name.errors %}
+
+                        <div class="form-error">
+                            {{ error }}
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+
+                <div class="mb-4">
+
+                    {{ profile_form.email.label(class="form-label") }}
+
+                    {{ profile_form.email(
+                        class="form-control helpora-input"
+                    ) }}
+
+                    {% for error in profile_form.email.errors %}
+
+                        <div class="form-error">
+                            {{ error }}
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+
+                {{ profile_form.submit(
+                    class="btn helpora-btn"
+                ) }}
+
+            </form>
+
+        </div>
+
+
+
+        <!-- CHANGE PASSWORD -->
+        <div class="settings-card">
+
+            <div class="settings-card-header">
+
+                <h3>
+                    Change Password
+                </h3>
+
+                <p>
+                    Enter your current password before choosing a new one.
+                </p>
+
+            </div>
+
+
+            <form method="POST">
+
+                {{ password_form.hidden_tag() }}
+
+
+                <div class="mb-4">
+
+                    {{ password_form.current_password.label(class="form-label") }}
+
+                    {{ password_form.current_password(
+                        class="form-control helpora-input"
+                    ) }}
+
+                    {% for error in password_form.current_password.errors %}
+
+                        <div class="form-error">
+                            {{ error }}
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+
+                <div class="mb-4">
+
+                    {{ password_form.new_password.label(class="form-label") }}
+
+                    {{ password_form.new_password(
+                        class="form-control helpora-input"
+                    ) }}
+
+                    {% for error in password_form.new_password.errors %}
+
+                        <div class="form-error">
+                            {{ error }}
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+
+                <div class="mb-4">
+
+                    {{ password_form.confirm_password.label(class="form-label") }}
+
+                    {{ password_form.confirm_password(
+                        class="form-control helpora-input"
+                    ) }}
+
+                    {% for error in password_form.confirm_password.errors %}
+
+                        <div class="form-error">
+                            {{ error }}
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+
+                {{ password_form.submit(
+                    class="btn helpora-btn"
+                ) }}
+
+            </form>
+
+        </div>
+
+
+
+        <!-- DANGER ZONE -->
+        <div class="settings-card settings-danger">
+
+            <div class="settings-danger-content">
+
+                <div>
+
+                    <span class="settings-danger-label">
+                        Danger Zone
+                    </span>
+
+                    <h3>
+                        Delete Account
+                    </h3>
+
+                    <p>
+                        Permanently delete your Helpora account.
+                        This action cannot be undone.
+                    </p>
+
+                </div>
+
+
+                <form
+                    action="{{url_for('delete_account')}}",
+                    method="POST"
+                >
+
+                    <button
+                        type="submit"
+                        class="btn btn-outline-danger"
+                    >
+                        Delete Account
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+{% endblock %}

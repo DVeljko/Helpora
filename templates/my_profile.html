@@ -1,0 +1,433 @@
+{% extends "base.html" %}
+
+{% block title %}
+My Profile | Helpora
+{% endblock %}
+
+{% block content %}
+
+<section class="profile-section">
+
+    <div class="container">
+
+        <!-- PROFILE HEADER -->
+        <div class="profile-header">
+
+            <div class="profile-avatar">
+                {{ current_user.name[0] | upper }}
+            </div>
+
+            <div class="profile-info">
+
+                <span class="section-label">
+                    My Profile
+                </span>
+
+                <h1>
+                    {{ current_user.name }}
+                </h1>
+
+                <p>
+                    {{ current_user.email }}
+                </p>
+
+                <span class="profile-member-since">
+                    Member since:
+                    {{ current_user.created_at.strftime('%d %b %Y') }}
+                </span>
+
+            </div>
+
+
+            <div class="profile-settings-action">
+
+                <a
+                    href="{{ url_for('settings', user_id=current_user.id) }}"
+                    class="btn btn-outline-dark"
+                >
+                    Settings
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- PROFILE STATISTICS -->
+        <div class="row g-4 profile-stats">
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="profile-stat-card">
+
+                    <span>
+                        My Campaigns
+                    </span>
+
+                    <h2>
+                        {{ current_user.campaigns | length }}
+                    </h2>
+
+                    <p>
+                        Campaigns created
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="profile-stat-card">
+
+                    <span>
+                        My Donations
+                    </span>
+
+                    <h2>
+                        {{ current_user.donations | length }}
+                    </h2>
+
+                    <p>
+                        Donations made
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="profile-stat-card">
+
+                    <span>
+                        Total Donated
+                    </span>
+
+                    <h2>
+                        €{{ current_user.donations | map(attribute='amount') | sum }}
+                    </h2>
+
+                    <p>
+                        Total amount donated
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="profile-stat-card">
+
+                    <span>
+                        Account
+                    </span>
+
+                    <h2>
+                        Active
+                    </h2>
+
+                    <p>
+                        Helpora member
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MY CAMPAIGNS -->
+        <div class="profile-panel">
+
+            <div class="profile-panel-header">
+
+                <div>
+
+                    <span class="section-label">
+                        Campaigns
+                    </span>
+
+                    <h2>
+                        My Campaigns
+                    </h2>
+
+                    <p>
+                        View and manage campaigns you have created.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="{{ url_for('add_campaign') }}"
+                    class="btn helpora-btn"
+                >
+                    Start a Campaign
+                </a>
+
+            </div>
+
+
+            {% if current_user.campaigns %}
+
+                <div class="row g-4">
+
+                    {% for campaign in current_user.campaigns %}
+
+                        <div class="col-lg-4 col-md-6">
+
+                            <div class="campaign-card h-100">
+
+                                <img
+                                    src="{{ url_for('static', filename='uploads/' + campaign.image_url) }}"
+                                    class="campaign-image"
+                                    alt="{{ campaign.title }}"
+                                >
+
+                                <div class="campaign-body d-flex flex-column">
+
+                                    <div class="profile-campaign-top">
+
+                                        <span class="campaign-category">
+                                            {{ campaign.category }}
+                                        </span>
+
+
+                                        {% if campaign.status == 'approved' %}
+
+                                            <span class="admin-status approved">
+                                                Approved
+                                            </span>
+
+                                        {% elif campaign.status == 'pending' %}
+
+                                            <span class="admin-status pending">
+                                                Pending
+                                            </span>
+
+                                        {% else %}
+
+                                            <span class="admin-status rejected">
+                                                Rejected
+                                            </span>
+
+                                        {% endif %}
+
+                                    </div>
+
+
+                                    <h4 class="campaign-title">
+                                        {{ campaign.title }}
+                                    </h4>
+
+
+                                    <p class="campaign-description-preview">
+                                        {{ campaign.description }}
+                                    </p>
+
+
+                                    <div class="campaign-progress-section mt-auto">
+
+                                        <div class="campaign-money">
+
+                                            <span>
+                                                Goal:
+                                                <strong>
+                                                    €{{ campaign.goal_amount }}
+                                                </strong>
+                                            </span>
+
+                                        </div>
+
+
+                                        <div class="profile-campaign-actions">
+
+                                            <!-- VIEW -->
+                                            <a
+                                                href="{{ url_for('single_campaign', campaign_id=campaign.id) }}"
+                                                class="btn btn-outline-dark"
+                                            >
+                                                View
+                                            </a>
+
+
+                                            <!-- EDIT -->
+                                            <a
+                                                href="{{ url_for('edit_campaign', campaign_id=campaign.id) }}"
+                                                class="btn helpora-btn"
+                                            >
+                                                Edit
+                                            </a>
+
+
+                                            <!-- DELETE -->
+                                            <form
+                                                action="{{ url_for('delete_campaign', campaign_id=campaign.id) }}"
+                                                method="POST"
+                                                class="profile-delete-form"
+                                            >
+                                                <button
+                                                    type="submit"
+                                                    class="btn btn-outline-danger"
+                                                >
+                                                    Delete
+                                                </button>
+                                            </form>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <div class="profile-empty-state">
+
+                    <h4>
+                        You haven't created any campaigns yet.
+                    </h4>
+
+                    <p>
+                        Start your first campaign and submit it for approval.
+                    </p>
+
+                    <a
+                        href="{{ url_for('add_campaign') }}"
+                        class="btn helpora-btn"
+                    >
+                        Create Campaign
+                    </a>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- MY DONATIONS -->
+        <div class="profile-panel">
+
+            <div class="profile-panel-header">
+
+                <div>
+
+                    <span class="section-label">
+                        Donations
+                    </span>
+
+                    <h2>
+                        My Donations
+                    </h2>
+
+                    <p>
+                        View your donation history and campaigns you have supported.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            {% if current_user.donations %}
+
+                <div class="table-responsive">
+
+                    <table class="table admin-table align-middle">
+
+                        <thead>
+
+                            <tr>
+                                <th>Campaign</th>
+                                <th>Amount</th>
+                                <th>Date</th>
+                                <th>Action</th>
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            {% for donation in current_user.donations %}
+
+                                <tr>
+
+                                    <td>
+                                        {{ donation.campaign.title }}
+                                    </td>
+
+                                    <td>
+                                        <strong>
+                                            €{{ donation.amount }}
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        {{ donation.donated_at.strftime('%d %b %Y') }}
+                                    </td>
+
+                                    <td>
+
+                                        <a
+                                            href="{{ url_for('single_campaign', campaign_id=donation.campaign.id) }}"
+                                            class="btn btn-sm btn-outline-dark"
+                                        >
+                                            View Campaign
+                                        </a>
+
+                                    </td>
+
+                                </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            {% else %}
+
+                <div class="profile-empty-state">
+
+                    <h4>
+                        No donations yet.
+                    </h4>
+
+                    <p>
+                        Explore active campaigns and support someone who needs help.
+                    </p>
+
+                    <a
+                        href="{{ url_for('all_campaigns') }}"
+                        class="btn helpora-btn"
+                    >
+                        Explore Campaigns
+                    </a>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

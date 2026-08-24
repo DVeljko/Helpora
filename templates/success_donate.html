@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}
+Donation Successful | Helpora
+{% endblock %}
+
+{% block content %}
+
+<section class="success-donation-section">
+
+    <div class="container">
+
+        <div class="success-donation-wrapper">
+
+            <div class="success-donation-card text-center">
+
+                <div class="success-donation-icon">
+                    ✓
+                </div>
+
+                <span class="section-label">
+                    Thank You
+                </span>
+
+                <h1>
+                    Donation successful
+                </h1>
+
+                <p>
+                    Your donation has been successfully recorded.
+                    Thank you for supporting someone who needs help.
+                </p>
+
+                <div class="success-donation-actions">
+
+                    <a
+                        href="{{ url_for('homepage') }}"
+                        class="btn helpora-btn"
+                    >
+                        Back Home
+                    </a>
+
+                    <a
+                        href="{{ url_for('all_campaigns') }}"
+                        class="btn btn-outline-dark"
+                    >
+                        View Campaigns
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
