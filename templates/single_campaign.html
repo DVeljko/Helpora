@@ -66,6 +66,9 @@
             <!-- RIGHT SIDE -->
             <div class="col-lg-5">
 
+                {% set donated = campaign.donations | map(attribute='amount') | sum %}
+                {% set progress = (donated / campaign.goal_amount * 100) if campaign.goal_amount else 0 %}
+
                 <div class="single-campaign-donation-card">
 
                     <span class="section-label">
@@ -86,7 +89,7 @@
 
                         <div
                             class="progress-bar"
-                            style="width: 0%;">
+                            style="width: {{ progress }}%;">
                         </div>
 
                     </div>

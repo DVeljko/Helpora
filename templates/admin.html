@@ -179,10 +179,10 @@ Admin Dashboard | Helpora
                                         Reject
                                     </a>
 
-                                    <a href="#" class="btn btn-sm btn-outline-dark">
+                                    <a href="{{ url_for('single_campaign', campaign_id=campaign.id) }}"
+                                    class="btn btn-sm btn-outline-dark">
                                         View
                                     </a>
-
                                 </div>
                             </td>
                         </tr>
@@ -279,7 +279,8 @@ Admin Dashboard | Helpora
                                         </button>
                                     </form>
 
-                                    <a href="#" class="btn btn-sm btn-outline-dark">
+                                    <a href="{{ url_for('single_campaign', campaign_id=campaign.id) }}"
+                                    class="btn btn-sm btn-outline-dark">
                                         View
                                     </a>
 

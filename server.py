@@ -116,7 +116,7 @@ def all_campaigns():
 
 @app.route('/single-campaign/<int:campaign_id>')
 def single_campaign(campaign_id):
-    campaign = db.session.get(Campaign, campaign_id)
+    campaign = db.get_or_404(Campaign, campaign_id)
     return render_template('single_campaign.html', campaign=campaign)
 
 @app.route('/about')
@@ -335,39 +335,47 @@ def change_status(campaign_id, action):
 
 
 @app.route('/edit-campaign/<int:campaign_id>', methods=['GET','POST'])
-@admin_only
+@login_required
 def edit_campaign(campaign_id):
-    campaign = db.session.get(Campaign, campaign_id)
-    form = CampaignForm(obj=campaign)
+    campaign = db.get_or_404(Campaign, campaign_id)
 
-    if form.validate_on_submit():
-        campaign.title = form.title.data
-        campaign.description = form.description.data
-        campaign.category = form.category.data
-        campaign.goal_amount = form.goal_amount.data
+    if current_user.id == campaign.user_id or current_user.id == 1:
+        form = CampaignForm(obj=campaign)
 
-        image = form.image.data
+        if form.validate_on_submit():
+            campaign.title = form.title.data
+            campaign.description = form.description.data
+            campaign.category = form.category.data
+            campaign.goal_amount = form.goal_amount.data
 
-        if image:
-            filename = image.filename
+            image = form.image.data
 
-            image.save(
-                os.path.join(
-                    app.root_path,
-                    'static',
-                    'uploads',
-                    filename
+            if image:
+                filename = image.filename
+
+                image.save(
+                    os.path.join(
+                        app.root_path,
+                        'static',
+                        'uploads',
+                        filename
+                    )
                 )
-            )
 
-            campaign.image_url = filename
+                campaign.image_url = filename
 
-        
+            
 
-        db.session.commit()
-        return redirect(url_for('admin'))
+            db.session.commit()
 
-    return render_template('edit.html', form=form, campaign=campaign)
+            if current_user.id == 1:
+                return redirect(url_for('admin'))
+
+            return redirect(url_for('my_profile'))
+
+        return render_template('edit.html', form=form, campaign=campaign)
+
+    return abort(403)
 
 @app.route('/delete-campaign/<int:campaign_id>',  methods=['POST'])
 @login_required
