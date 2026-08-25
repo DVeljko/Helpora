@@ -14,10 +14,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_required, current_user, LoginManager, UserMixin, login_user, logout_user
 
 # IMPORTING FOR DATABASE
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Integer, String, Float, Text, ForeignKey
-from sqlalchemy.orm import Mapped, mapped_column, relationship
-
+from models import db, User, Campaign, Donation
 load_dotenv()
 
 app = Flask(__name__)
@@ -25,11 +22,12 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///helpora_base.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db.init_app(app)
 
-db= SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.login_view = 'login_page'
 login_manager.init_app(app)
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -46,38 +44,6 @@ def admin_only(f):
         return f(*args, **kwargs)
 
     return check_admin
-
-class User(db.Model, UserMixin):
-    __tablename__ = 'users'
-    id: Mapped[int] = mapped_column(Integer , primary_key=True)
-    name: Mapped[str] = mapped_column(String, nullable=False)
-    email: Mapped[str] = mapped_column(String, unique=True, nullable=False)
-    password: Mapped[str] = mapped_column(String, nullable=False)
-    created_at: Mapped[datetime] = mapped_column(default=lambda: datetime.now(timezone.utc))
-    campaigns: Mapped[list["Campaign"]] = relationship('Campaign',backref='user' , lazy=True)
-    donations: Mapped[list["Donation"]] = relationship('Donation', backref='donator', lazy=True)
-
-
-class Campaign(db.Model):
-    __tablename__ = 'campaigns'
-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    title: Mapped[str] = mapped_column(String(250), nullable=False)
-    description: Mapped[str] = mapped_column(Text, nullable=False)
-    category: Mapped[str] = mapped_column(String, nullable=False)
-    image_url: Mapped[str] = mapped_column(String(500), nullable=False)
-    goal_amount: Mapped[float] = mapped_column(Float, nullable=False)
-    status: Mapped[str] = mapped_column(String, nullable=False)
-    created_at: Mapped[datetime] = mapped_column(default=lambda: datetime.now(timezone.utc))
-    user_id: Mapped[int] = mapped_column(ForeignKey('users.id'))
-    donations: Mapped[list["Donation"]] = relationship('Donation', backref='campaign', lazy=True)
-
-class Donation(db.Model):
-    __tablename__ = 'donations'
-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    amount: Mapped[float] = mapped_column(Float, nullable=False)
-    donated_at: Mapped[datetime] = mapped_column(default=lambda: datetime.now(timezone.utc))
-    donator_id: Mapped[int] = mapped_column(ForeignKey('users.id'))
-    campaign_id: Mapped[int] = mapped_column(ForeignKey('campaigns.id'))
 
 with app.app_context():
     db.create_all()
