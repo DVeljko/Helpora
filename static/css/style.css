@@ -2452,3 +2452,69 @@ main {
         width: 100%;
     }
 }
+
+.top-donators-section {
+    padding: 90px 0 200px;
+    background: #f8f9fa;
+}
+
+.donator-card {
+    position: relative;
+    padding: 40px 30px;
+    background: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 18px;
+    transition: 0.25s ease;
+}
+
+.donator-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.donator-rank {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    color: #777;
+}
+
+.donator-avatar {
+    width: 75px;
+    height: 75px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #111;
+    color: #ffffff;
+
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.donator-name {
+    margin-bottom: 8px;
+
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.donator-label {
+    margin-bottom: 5px;
+    color: #777;
+}
+
+.donator-amount {
+    font-size: 26px;
+    font-weight: 700;
+}

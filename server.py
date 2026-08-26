@@ -55,7 +55,26 @@ with app.app_context():
 def homepage():
     query = db.select(Campaign)
     campaigns = db.session.scalars(query).all()
-    return render_template('homepage.html', campaigns=campaigns)
+    users = db.session.scalars(db.select(User)).all()
+
+    top_donators = []
+
+    for user in users:
+        total_donated = sum(donation.amount for donation in user.donations)
+
+        top_donators.append({
+            "name": user.name,
+            "total_donated": total_donated
+        })
+
+    top_donators.sort(
+        key=lambda donor: donor["total_donated"],
+        reverse=True
+    )
+
+    top_donators = top_donators[:3]
+
+    return render_template('homepage.html', campaigns=campaigns, top_donators=top_donators)
 
 
 @app.route('/all-campaigns')

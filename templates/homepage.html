@@ -286,6 +286,67 @@ Helpora | Home
     </div>
 </section>
 
+<!-- TOP DONATORS -->
+<section class="top-donators-section">
+    <div class="container">
+
+        <div class="section-heading text-center">
+
+            <span class="section-label">
+                Top supporters
+            </span>
+
+            <h2>
+                Our top 3 donators
+            </h2>
+
+            <p>
+                These supporters have contributed the most to helping
+                people through Helpora.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4 justify-content-center">
+
+            {% for donor in top_donators %}
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="donator-card h-100 text-center">
+
+                    <div class="donator-rank">
+                        #{{ loop.index }}
+                    </div>
+
+                    <div class="donator-avatar">
+                        {{ donor.name[0] | upper }}
+                    </div>
+
+                    <h4 class="donator-name">
+                        {{ donor.name }}
+                    </h4>
+
+                    <p class="donator-label">
+                        Total donated
+                    </p>
+
+                    <div class="donator-amount">
+                        €{{ donor.total_donated }}
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+</section>
+
 
 <!-- HOW IT WORKS -->
 <section class="how-it-works-section">
@@ -375,6 +436,7 @@ Helpora | Home
 
     </div>
 </section>
+
 
 
 <!-- CTA SECTION -->
