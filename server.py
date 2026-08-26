@@ -57,10 +57,13 @@ def homepage():
     campaigns = db.session.scalars(query).all()
     return render_template('homepage.html', campaigns=campaigns)
 
+
 @app.route('/all-campaigns')
 def all_campaigns():
 
     category = request.args.get('category')
+    search = request.args.get('search')
+
 
     query = db.select(Campaign).where(
         Campaign.status == 'approved'
@@ -71,6 +74,10 @@ def all_campaigns():
             Campaign.category == category
         )
 
+    if search:
+        query = query.where(Campaign.title.ilike(f"%{search}%"))
+        
+
     campaigns = db.session.scalars(query).all()
 
     return render_template(
@@ -78,6 +85,7 @@ def all_campaigns():
         campaigns=campaigns,
         category=category
     )
+
 
 
 @app.route('/single-campaign/<int:campaign_id>')

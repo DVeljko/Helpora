@@ -11,6 +11,7 @@ All Campaigns | Helpora
 
     <div class="container">
 
+
         <div class="section-heading text-center">
 
             <span class="section-label">
@@ -26,6 +27,18 @@ All Campaigns | Helpora
             </p>
 
         </div>
+
+        <form action="{{ url_for('all_campaigns') }}" method="GET" class="campaign-search-form">
+            <input
+                type="text"
+                name="search"
+                placeholder="Search campaigns..."
+                class="campaign-search-input"
+            >
+            <button type="submit" class="campaign-search-btn">
+                Search
+            </button>
+        </form>
 
 
         <!-- FILTERS -->
