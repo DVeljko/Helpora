@@ -225,9 +225,11 @@ Profile Settings | Helpora
 
 
                 <form
-                    action="{{url_for('delete_account')}}",
+                    action="{{url_for('delete_account')}}"
                     method="POST"
+                    onsubmit="return confirm('Are you sure you want to permanently delete your account? This action cannot be undone.');"
                 >
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
                     <button
                         type="submit"

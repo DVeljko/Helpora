@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Integer, String, Float, Text, ForeignKey
+from sqlalchemy import Integer, String, Float, Text, ForeignKey, Boolean, CheckConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from flask_login import  UserMixin
 from datetime import datetime, timezone
@@ -12,6 +12,7 @@ class User(db.Model, UserMixin):
     name: Mapped[str] = mapped_column(String, nullable=False)
     email: Mapped[str] = mapped_column(String, unique=True, nullable=False)
     password: Mapped[str] = mapped_column(String, nullable=False)
+    is_admin: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
     created_at: Mapped[datetime] = mapped_column(default=lambda: datetime.now(timezone.utc))
     campaigns: Mapped[list["Campaign"]] = relationship('Campaign',backref='user' , lazy=True)
     donations: Mapped[list["Donation"]] = relationship('Donation', backref='donator', lazy=True)
@@ -32,6 +33,9 @@ class Campaign(db.Model):
 
 class Donation(db.Model):
     __tablename__ = 'donations'
+
+    __table_args__ = (CheckConstraint("amount > 0", name="check_positive_donation"),)
+
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     amount: Mapped[float] = mapped_column(Float, nullable=False)
     donated_at: Mapped[datetime] = mapped_column(default=lambda: datetime.now(timezone.utc))

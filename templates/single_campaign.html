@@ -1,3 +1,4 @@
+
 {% extends "base.html" %}
 
 {% block title %}
@@ -67,7 +68,13 @@
             <div class="col-lg-5">
 
                 {% set donated = campaign.donations | map(attribute='amount') | sum %}
-                {% set progress = (donated / campaign.goal_amount * 100) if campaign.goal_amount else 0 %}
+
+                {% if campaign.goal_amount > 0 %}
+                    {% set raw_progress = (donated / campaign.goal_amount) * 100 %}
+                    {% set progress = [raw_progress, 100] | min %}
+                {% else %}
+                    {% set progress = 0 %}
+                {% endif %}
 
                 <div class="single-campaign-donation-card">
 
@@ -76,12 +83,12 @@
                     </span>
 
                     <h2>
-                        €{{donated}}
+                        €{{ "%.2f" | format(donated) }}
                     </h2>
 
                     <p class="raised-text">
                         raised of
-                        <strong>€{{ campaign.goal_amount }}</strong>
+                        <strong>€{{ "%.2f" | format(campaign.goal_amount) }}</strong>
                     </p>
 
 
@@ -89,7 +96,10 @@
 
                         <div
                             class="progress-bar"
-                            style="width: {{ progress }}%;">
+                            role="progressbar"
+                            aria-valuenow="{{ progress | round(2) }}"
+                            aria-valuemin="0"
+                            aria-valuemax="100">
                         </div>
 
                     </div>
@@ -98,17 +108,17 @@
                     <div class="single-campaign-stats">
 
                         <div>
-                            <strong>€ {{campaign.donations | map(attribute='amount') | sum}}</strong>
+                            <strong>€{{ "%.2f" | format(donated) }}</strong>
                             <span>Raised</span>
                         </div>
 
                         <div>
-                            <strong>€{{ campaign.goal_amount }}</strong>
+                            <strong>€{{ "%.2f" | format(campaign.goal_amount) }}</strong>
                             <span>Goal</span>
                         </div>
 
                         <div>
-                            <strong>0</strong>
+                            <strong>{{ campaign.donations | length }}</strong>
                             <span>Donations</span>
                         </div>
 
@@ -133,5 +143,12 @@
     </div>
 
 </section>
+
+<script>
+    document.querySelectorAll(".single-campaign-progress .progress-bar").forEach(function(bar) {
+        const progress = Number(bar.getAttribute("aria-valuenow"));
+        bar.style.width = progress + "%";
+    });
+</script>
 
 {% endblock %}

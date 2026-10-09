@@ -1,3 +1,4 @@
+
 {% extends "base.html" %}
 
 {% block title %}
@@ -42,7 +43,7 @@ My Profile | Helpora
             <div class="profile-settings-action">
 
                 <a
-                    href="{{ url_for('settings', user_id=current_user.id) }}"
+                    href="{{ url_for('settings') }}"
                     class="btn btn-outline-dark"
                 >
                     Settings
@@ -270,6 +271,8 @@ My Profile | Helpora
                                                 method="POST"
                                                 class="profile-delete-form"
                                             >
+                                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
                                                 <button
                                                     type="submit"
                                                     class="btn btn-outline-danger"

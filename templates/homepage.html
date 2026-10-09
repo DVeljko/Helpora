@@ -58,18 +58,18 @@ Helpora | Home
                     <div class="hero-stats">
 
                         <div>
-                            <h4>120+</h4>
+                            <h4>{{ campaigns | length }}</h4>
                             <span>Campaigns</span>
                         </div>
 
                         <div>
-                            <h4>850+</h4>
+                            <h4>{{ donation_count }}</h4>
                             <span>Donations</span>
                         </div>
 
                         <div>
-                            <h4>95+</h4>
-                            <span>People Helped</span>
+                            <h4>{{ goals_reached }}</h4>
+                            <span>Goals Reached</span>
                         </div>
 
                     </div>
@@ -212,56 +212,70 @@ Helpora | Home
 
         <div class="row g-4">
 
-    {% for campaign in campaigns[-3:] %}
+            {% for campaign in campaigns[-3:] %}
 
-        <div class="col-lg-4 col-md-6">
+            <div class="col-lg-4 col-md-6">
 
-            <div class="campaign-card h-100">
+                <div class="campaign-card h-100">
 
-                <img
-                    src="{{ url_for('static', filename='uploads/' + campaign.image_url) }}"
-                    class="campaign-image"
-                    alt="{{ campaign.title }}"
-                >
+                    <img
+                        src="{{ url_for('static', filename='uploads/' + campaign.image_url) }}"
+                        class="campaign-image"
+                        alt="{{ campaign.title }}"
+                    >
 
-                <div class="campaign-body d-flex flex-column">
+                    <div class="campaign-body d-flex flex-column">
 
-                    <span class="campaign-category">
-                        {{ campaign.category }}
-                    </span>
+                        <span class="campaign-category">
+                            {{ campaign.category }}
+                        </span>
 
-                    <h4 class="campaign-title">
-                        {{ campaign.title }}
-                    </h4>
+                        <h4 class="campaign-title">
+                            {{ campaign.title }}
+                        </h4>
 
-                    <p class="campaign-description-preview">
-                        {{ campaign.description }}
-                    </p>
+                        <p class="campaign-description-preview">
+                            {{ campaign.description }}
+                        </p>
 
-                    <div class="campaign-progress-section mt-auto">
+                        {% set total_raised = campaign.donations | map(attribute='amount') | sum %}
 
-                        <div class="progress">
-                            <div
-                                class="progress-bar"
-                                style="width: 0%;">
+                        {% if campaign.goal_amount > 0 %}
+                            {% set raw_progress = (total_raised / campaign.goal_amount) * 100 %}
+                            {% set progress = [raw_progress, 100] | min %}
+                        {% else %}
+                            {% set progress = 0 %}
+                        {% endif %}
+
+                        <div class="campaign-progress-section mt-auto">
+
+                            <div class="progress">
+                                <div
+                                    class="progress-bar"
+                                    role="progressbar"
+                                    aria-valuenow="{{ progress | round(2) }}"
+                                    aria-valuemin="0"
+                                    aria-valuemax="100">
+                                </div>
                             </div>
+
+                            <div class="campaign-money">
+
+                                <span>
+                                    <strong>€{{ "%.2f" | format(total_raised) }}</strong> raised
+                                </span>
+
+                                <span>
+                                    Goal: €{{ "%.2f" | format(campaign.goal_amount) }}
+                                </span>
+
+                            </div>
+
+                            <a href="{{url_for('single_campaign', campaign_id=campaign.id)}}" class="btn helpora-btn w-100">
+                                View Campaign
+                            </a>
+
                         </div>
-
-                        <div class="campaign-money">
-
-                            <span>
-                                <strong>€0</strong> raised
-                            </span>
-
-                            <span>
-                                Goal: €{{ campaign.goal_amount }}
-                            </span>
-
-                        </div>
-
-                        <a href="{{url_for('single_campaign', campaign_id=campaign.id)}}" class="btn helpora-btn w-100">
-                            View Campaign
-                        </a>
 
                     </div>
 
@@ -269,11 +283,9 @@ Helpora | Home
 
             </div>
 
+            {% endfor %}
+
         </div>
-
-    {% endfor %}
-
-</div>
 
         <div class="text-center mt-5">
 
@@ -285,6 +297,7 @@ Helpora | Home
 
     </div>
 </section>
+
 
 <!-- TOP DONATORS -->
 <section class="top-donators-section">
@@ -462,5 +475,13 @@ Helpora | Home
 
     </div>
 </section>
+
+
+<script>
+    document.querySelectorAll(".progress-bar").forEach(function(bar) {
+        const progress = Number(bar.getAttribute("aria-valuenow"));
+        bar.style.width = progress + "%";
+    });
+</script>
 
 {% endblock %}
